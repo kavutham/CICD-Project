@@ -3,7 +3,7 @@ Parameters:
   SubnetID:
     Type: String
   VpcId:
-    Type: String
+    Type: 'AWS::EC2::VPC::Id'
   ServiceName:
     Type: String
   ServiceVersion:
@@ -20,6 +20,7 @@ Resources:
     Properties:
       GroupName: ServiceSecurityGroup
       GroupDescription: Security group for service
+      VpcId: !Ref VpcId
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 8080
