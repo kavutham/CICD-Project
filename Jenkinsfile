@@ -38,7 +38,7 @@ pipeline {
                 DOCKER_HUB_LOGIN = credentials('docker-hub')
             }
             steps {
-                withAWS(credentials: 'aws-credentials', region: env.AWS_REGION) {
+                withAWS(credentials: 'awscredential', region: env.AWS_REGION) {
                     sh './gradlew awsCfnMigrateStack awsCfnWaitStackComplete -PsubnetId=${SUBNET_ID} -PdockerHubUsername=$DOCKER_HUB_LOGIN_USR -Pregion=${AWS_REGION}'
                 }
             }
