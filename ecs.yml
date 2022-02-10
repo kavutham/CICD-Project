@@ -30,9 +30,9 @@ Resources:
       Cpu: 256
       Memory: 512
       NetworkMode: awsvpc
-      ContainerDefinitions: 
+      ContainerDefinitions:
         - Name: !Sub ${ServiceName}-container
-          Image: !Sub ${dockerImageName}:${dockerImageTag}
+          Image: !Sub ${DockerHubUsername}/${ServiceName}:${ServiceVersion}
           PortMappings:
             - ContainerPort: 8080
       RequiresCompatibilities:
