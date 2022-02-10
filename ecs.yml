@@ -3,7 +3,9 @@ Parameters:
   SubnetID:
     Type: String
   VpcId:
-    Type: 'AWS::EC2::VPC::Id'
+    Description: 
+    Type: AWS::EC2::VPC::Id
+    Default: vpc-0d1945e9dfd063f48
   ServiceName:
     Type: String
   ServiceVersion:
@@ -52,8 +54,6 @@ Resources:
       NetworkConfiguration:
         AwsvpcConfiguration:
           AssignPublicIp: ENABLED
-          VPC:
-            - !Ref VpcId
           Subnets:
             - !Ref SubnetID
           SecurityGroups:
