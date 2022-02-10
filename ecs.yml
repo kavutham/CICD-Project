@@ -3,7 +3,7 @@ Parameters:
   SubnetID:
     Type: String
   VpcId:
-    Description: 
+    Description: "VPC ID for ECS"
     Type: AWS::EC2::VPC::Id
     Default: vpc-0d1945e9dfd063f48
   ServiceName:
