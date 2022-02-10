@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        AWS_ACCOUNT_ID="CHANGE_ME" //aws account ID to be used
+        AWS_ACCOUNT_ID="680032936053" //aws account ID to be used
         AWS_DEFAULT_REGION="us-east-1"
         IMAGE_REPO_NAME="spring-boot-api-example"
         IMAGE_TAG="${env.BUILD_ID}"
