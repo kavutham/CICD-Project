@@ -2,6 +2,8 @@ AWSTemplateFormatVersion: "2010-09-09"
 Parameters:
   SubnetID:
     Type: String
+  VpcId:
+    Type: String
   ServiceName:
     Type: String
   ServiceVersion:
@@ -49,6 +51,8 @@ Resources:
       NetworkConfiguration:
         AwsvpcConfiguration:
           AssignPublicIp: ENABLED
+          VPC:
+            - !Ref VpcId
           Subnets:
             - !Ref SubnetID
           SecurityGroups:
