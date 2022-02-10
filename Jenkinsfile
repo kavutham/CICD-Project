@@ -3,6 +3,7 @@ pipeline {
     environment {
         AWS_DEFAULT_REGION="us-east-1"
         SUBNET_ID="subnet-0f9e260e7966a7012"
+        VPCID="vpc-0d1945e9dfd063f48"
     }
 
     triggers {
@@ -39,7 +40,7 @@ pipeline {
             }
             steps {
                 withAWS(credentials: 'awscredential', region: env.AWS_REGION) {
-                    sh './gradlew awsCfnMigrateStack awsCfnWaitStackComplete -PsubnetId=${SUBNET_ID} -PdockerHubUsername=$DOCKER_HUB_LOGIN_USR -Pregion=${AWS_REGION}'
+                    sh './gradlew awsCfnMigrateStack awsCfnWaitStackComplete -PsubnetId=${SUBNET_ID} -Pvpcid=${VPCID} -PdockerHubUsername=$DOCKER_HUB_LOGIN_USR -Pregion=${AWS_REGION}'
                 }
             }
         }
