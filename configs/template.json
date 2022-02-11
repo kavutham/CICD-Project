@@ -1,0 +1,18 @@
+[
+        {
+            "ParameterKey": "VpcId",
+            "ParameterValue": "vpc-0d1945e9dfd063f48"
+        },
+        {
+            "ParameterKey": "SubnetId",
+            "ParameterValue": "subnet-0f9e260e7966a7012,subnet-02b116a8689d2f637"
+        },
+        {
+            "ParameterKey": "ClusterName",
+            "ParameterValue": "My-Dev-Demo"
+        },
+        {
+            "ParameterKey": "AppName",
+            "ParameterValue": "Spring-App"
+        }
+]
