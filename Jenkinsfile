@@ -1,8 +1,10 @@
 pipeline {
     agent any
     environment {
-        AWS_DEFAULT_REGION="us-east-1"
-        SUBNET_ID="subnet-0f9e260e7966a7012"
+        ECR_Reponame="spring-app"
+        TagName="${env.BUILD_ID}"
+        Stackname="mystack"
+        Dockerimage="${DOCKER_HUB_LOGIN_USR}/${ECR_Reponame}:${env.BUILD_ID}"
     }
 
     triggers {
@@ -21,7 +23,7 @@ pipeline {
         }
         stage('Build Docker image') {
             steps {
-                sh './gradlew docker'
+                sh './gradlew docker -PDockerimage=$Dockerimage'
             }
         }
         stage('Push Docker image') {
@@ -33,13 +35,17 @@ pipeline {
                 sh './gradlew dockerPush -PdockerHubUsername=$DOCKER_HUB_LOGIN_USR'
             }
         }
-        stage('Deploy to AWS') {
-            environment {
-                DOCKER_HUB_LOGIN = credentials('docker-hub')
-            }
+        stage('Push to ECR') {
             steps {
-                withAWS(credentials: 'awscredential', region: env.AWS_REGION) {
-                    sh './gradlew awsCfnMigrateStack awsCfnWaitStackComplete -PsubnetId=${SUBNET_ID} -PdockerHubUsername=$DOCKER_HUB_LOGIN_USR -Pregion=${AWS_REGION}'
+                withAWS(credentials: 'awscredential', region: env.AWS_REGION){
+                    make push_to_ecr
+                }
+            }
+        
+        stage('Deploy to AWS') {
+           steps {
+                withAWS(credentials: 'awscredential', region: env.AWS_REGION){
+                    make deploy_ecs
                 }
             }
         }

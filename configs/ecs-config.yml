@@ -38,7 +38,7 @@ Resources:
       NetworkMode: "awsvpc"
       ContainerDefinitions:
         - Name: !Ref 'AppName'
-          Image: "680032936053.dkr.ecr.us-east-1.amazonaws.com/spring-app:latest"
+          Image: !Sub 680032936053.dkr.ecr.us-east-1.amazonaws.com/${Reponame}:${Tagname}"
           MemoryReservation: 256
           Memory: 512
           LogConfiguration:
@@ -53,7 +53,7 @@ Resources:
   FargateAlb:
     Type: 'AWS::ElasticLoadBalancingV2::LoadBalancer'
     Properties:
-      Name: FargateAlb
+      Name: !Ref 'LBName'
       SecurityGroups:
         - !GetAtt FargateAlbSG.GroupId
       Subnets: !Ref 'SubnetId'

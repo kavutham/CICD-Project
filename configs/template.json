@@ -12,6 +12,18 @@
             "ParameterValue": "My-Dev-Demo"
         },
         {
+            "ParameterKey": "Reponame",
+            "ParameterValue": "spring-app"  
+        },
+        {
+            "ParameterKey": "Tagname",
+            "ParameterValue": "latest" 
+        },
+        {
+            "ParameterKey": "LBName",
+            "ParameterValue": "MyECSLB" 
+        },
+        {
             "ParameterKey": "AppName",
             "ParameterValue": "Spring-App"
         }
