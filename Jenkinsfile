@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         ECR_Reponame="spring-app"
-        TagName="${env.BUILD_ID}"
+        TagName="latest"
         Stackname="mystack"
         Dockerimage="vkavu/${ECR_Reponame}:latest"
         AWSRegion="us-east-1"
