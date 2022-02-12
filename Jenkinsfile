@@ -41,7 +41,7 @@ pipeline {
                     make push_to_ecr
                 }
             }
-        
+        }
         stage('Deploy to AWS') {
            steps {
                 withAWS(credentials: 'awscredential', region: env.AWS_REGION){
