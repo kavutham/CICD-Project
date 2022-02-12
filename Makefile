@@ -5,7 +5,7 @@ help:
 
 .PHONY: push2hub
 push2bub:
-	docker push vkavu/spring-app:latest
+	docker push ${Dockerimage}
 
 .PHONY: push2ecr
 push2ecr:

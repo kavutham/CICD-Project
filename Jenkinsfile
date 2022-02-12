@@ -5,6 +5,7 @@ pipeline {
         TagName="${env.BUILD_ID}"
         Stackname="mystack"
         Dockerimage="vkavu/${ECR_Reponame}:latest"
+        AWSRegion="us-east-1"
     }
 
     triggers {
@@ -38,14 +39,14 @@ pipeline {
         }
         stage('Push to ECR') {
             steps {
-                withAWS(credentials: 'awscredential', region: env.AWS_REGION){
+                withAWS(credentials: 'awscredential', region: ${AWSRegion}){
                     sh 'make push2ecr'
                 }
             }
         }
         stage('Deploy to AWS') {
            steps {
-                withAWS(credentials: 'awscredential', region: env.AWS_REGION){
+                withAWS(credentials: 'awscredential', region: ${AWSRegion}){
                     sh 'make deploy_ecs'
                 }
             }
