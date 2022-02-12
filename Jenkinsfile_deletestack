@@ -2,11 +2,14 @@ pipeline {
     agent any
     environment {
         Stackname="mystack"
+        AWSRegion="us-east-1"
     }
     stages {
         stage('Delete Stack') {
             steps {
-                sh 'make deletestack'
+                withAWS(credentials: 'awscredential', region: env.AWSRegion){
+                    sh 'make deletestack'
+                }
             }
         }
     }
