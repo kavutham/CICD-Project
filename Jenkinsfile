@@ -39,14 +39,14 @@ pipeline {
         }
         stage('Push to ECR') {
             steps {
-                withAWS(credentials: 'awscredential', region: ${AWSRegion}){
+                withAWS(credentials: 'awscredential', region: env.AWSRegion){
                     sh 'make push2ecr'
                 }
             }
         }
         stage('Deploy to AWS') {
            steps {
-                withAWS(credentials: 'awscredential', region: ${AWSRegion}){
+                withAWS(credentials: 'awscredential', region: env.AWSRegion){
                     sh 'make deploy_ecs'
                 }
             }
