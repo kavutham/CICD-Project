@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    environment {
+        Stackname="mystack"
+    }
+    stages {
+        stage('Delete Stack') {
+            steps {
+                sh 'make push2hub'
+            }
+        }
+    }
+}
