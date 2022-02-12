@@ -3,6 +3,10 @@ help:
 	@echo "\n"
 	@grep '^.PHONY: .* #' Makefile | sed 's/\.PHONY: \(.*\) # \(.*\)/\1 \2/' | expand -t20
 
+.PHONY: push2hub
+push2bub:
+	docker push vkavu/spring-app:latest
+
 .PHONY: push2ecr
 push2ecr:
 	aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 680032936053.dkr.ecr.us-east-1.amazonaws.com
