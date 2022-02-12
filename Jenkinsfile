@@ -7,10 +7,7 @@ pipeline {
         Dockerimage="vkavu/${ECR_Reponame}:latest"
         AWSRegion="us-east-1"
     }
-
-    triggers {
-        pollSCM '* * * * *'
-    }
+    
     stages {
         stage('Build') {
             steps {

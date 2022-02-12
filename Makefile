@@ -18,3 +18,7 @@ deploy_ecs:
 	aws cloudformation create-stack --stack-name ${Stackname} --template-body file://configs/ecs-config.yml --parameters file://configs/template.json
 	aws cloudformation wait stack-create-complete --stack-name ${Stackname}
 
+.PHONY: deletestack
+deletestack:
+	aws cloudformation delete-stack --stack-name ${Stackname}
+	aws cloudformation wait stack-delete-complete --stack-name ${Stackname}
