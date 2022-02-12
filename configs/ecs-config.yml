@@ -12,8 +12,16 @@ Parameters:
     Description: Select at least two subnets in your selected VPC.
   AppName:
     Type: String
-    Description: Name of the first application containers
+    Description: Name of the first application containers and ecr repo name
     Default: spring-app
+  Tagname:
+    Type: String
+    Description: Tag of image
+    Default: latest
+  LBName:
+    Type: String
+    Description: Loadbalancer
+  
 Resources:
   ECSCluster:
     Type: 'AWS::ECS::Cluster'
@@ -38,7 +46,7 @@ Resources:
       NetworkMode: "awsvpc"
       ContainerDefinitions:
         - Name: !Ref 'AppName'
-          Image: !Sub 680032936053.dkr.ecr.us-east-1.amazonaws.com/${Reponame}:${Tagname}"
+          Image: !Sub 680032936053.dkr.ecr.us-east-1.amazonaws.com/${AppName}:${Tagname}"
           MemoryReservation: 256
           Memory: 512
           LogConfiguration:

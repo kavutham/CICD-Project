@@ -12,10 +12,6 @@
             "ParameterValue": "My-Dev-Demo"
         },
         {
-            "ParameterKey": "Reponame",
-            "ParameterValue": "spring-app"  
-        },
-        {
             "ParameterKey": "Tagname",
             "ParameterValue": "latest" 
         },
