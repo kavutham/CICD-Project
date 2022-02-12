@@ -4,7 +4,7 @@ pipeline {
         ECR_Reponame="spring-app"
         TagName="${env.BUILD_ID}"
         Stackname="mystack"
-        Dockerimage="${DOCKER_HUB_LOGIN_USR}/${ECR_Reponame}:${env.BUILD_ID}"
+        Dockerimage="vkavu/${ECR_Reponame}:${env.BUILD_ID}"
     }
 
     triggers {
