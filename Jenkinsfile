@@ -38,7 +38,7 @@ pipeline {
         stage('Push to ECR') {
             steps {
                 withAWS(credentials: 'awscredential', region: env.AWS_REGION){
-                    make push_to_ecr
+                    make push2ecr
                 }
             }
         }
