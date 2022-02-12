@@ -24,16 +24,6 @@ pipeline {
                 sh './gradlew docker -PDockerimage=$Dockerimage'
             }
         }
-        stage('Push Docker image') {
-            environment {
-                DOCKER_HUB_LOGIN = credentials('docker-hub')
-            }
-            steps {
-                sh 'make push2hub'
-                //sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
-                //sh './gradlew dockerPush -PdockerHubUsername=$DOCKER_HUB_LOGIN_USR'
-            }
-        }
         stage('Push to ECR') {
             steps {
                 withAWS(credentials: 'awscredential', region: env.AWSRegion){
