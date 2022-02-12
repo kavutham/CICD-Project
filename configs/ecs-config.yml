@@ -46,7 +46,7 @@ Resources:
       NetworkMode: "awsvpc"
       ContainerDefinitions:
         - Name: !Ref 'AppName'
-          Image: 680032936053.dkr.ecr.us-east-1.amazonaws.com/spring-app:latest"
+          Image: !Sub "680032936053.dkr.ecr.us-east-1.amazonaws.com/${AppName}:${Tagname}"
           MemoryReservation: 256
           Memory: 512
           LogConfiguration:
