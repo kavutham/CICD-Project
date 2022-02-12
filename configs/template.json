@@ -21,6 +21,6 @@
         },
         {
             "ParameterKey": "AppName",
-            "ParameterValue": "spring-App"
+            "ParameterValue": "spring-app"
         }
 ]
