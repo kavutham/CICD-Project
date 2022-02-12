@@ -31,7 +31,7 @@ pipeline {
                 DOCKER_HUB_LOGIN = credentials('docker-hub')
             }
             steps {
-                make push2hub
+                sh 'make push2hub'
                 //sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
                 //sh './gradlew dockerPush -PdockerHubUsername=$DOCKER_HUB_LOGIN_USR'
             }
@@ -39,14 +39,14 @@ pipeline {
         stage('Push to ECR') {
             steps {
                 withAWS(credentials: 'awscredential', region: env.AWS_REGION){
-                    make push2ecr
+                    sh 'make push2ecr'
                 }
             }
         }
         stage('Deploy to AWS') {
            steps {
                 withAWS(credentials: 'awscredential', region: env.AWS_REGION){
-                    make deploy_ecs
+                    sh 'make deploy_ecs'
                 }
             }
         }
