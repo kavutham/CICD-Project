@@ -33,7 +33,7 @@ test {
 }
 
 //String imageName = findProperty('Dockerimage')?: ''
-String imageName = "vakvu/spring-app:latest"
+String imageName = "vkavu/spring-app:latest"
 
 docker {
     name imageName
