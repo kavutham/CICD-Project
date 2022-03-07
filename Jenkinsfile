@@ -24,6 +24,11 @@ pipeline {
                 sh './gradlew docker -PDockerimage=$Dockerimage'
             }
         }
+        stage('Image Scan') {
+            steps {
+                sh 'make clairscan'
+            }
+        }
         stage('Push to ECR') {
             steps {
                 withAWS(credentials: 'awscredential', region: env.AWSRegion){
